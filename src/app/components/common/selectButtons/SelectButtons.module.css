@@ -1,0 +1,47 @@
+.wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0 50px;
+  margin-bottom: 10px;
+}
+
+.button_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.button_container p,
+.button_container div {
+  width: 150px;
+  padding: 5px;
+  margin: 0 1px;
+}
+
+.button_container p {
+  background-color: gray;
+}
+
+.button_container div {
+  background-color: yellow;
+  cursor: pointer;
+}
+
+.select_container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 20px 0;
+}
+
+.select_container p {
+  height: 20px;
+  margin-right: 10px;
+}
+
+.select_container select {
+  height: 20px;
+}

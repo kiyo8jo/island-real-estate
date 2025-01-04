@@ -1,0 +1,22 @@
+.wrapper {
+  padding: 50px 50px 50px 50px;
+  background-color: gray;
+  display: flex;
+}
+
+.title {
+  font-size: large;
+  margin-bottom: 20px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.container > p {
+  font-size: medium;
+  cursor: pointer;
+}

@@ -1,0 +1,55 @@
+/* home_card */
+
+.home_card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f1f1c7;
+  height: 200px;
+  cursor: pointer;
+}
+
+/* left_container */
+
+.left_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
+  height: 100%;
+  background-color: #f3dada;
+}
+
+.img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  height: 85%;
+  background-color: #fff;
+}
+
+/* right_container */
+
+.right_container {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  gap: 20px;
+  padding: 0 30px;
+}
+
+.home_info_container {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  background-color: pink;
+}
+
+.home_info_label {
+  width: 20%;
+  margin-right: 10px;
+  background-color: #fff;
+}
