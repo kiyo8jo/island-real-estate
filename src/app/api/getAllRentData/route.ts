@@ -21,7 +21,7 @@ export const GET = async () => {
         },
       },
       orderBy: {
-        id: "asc",
+        createdAt: "desc",
       },
     });
     return NextResponse.json(realEstates, { status: 200 });

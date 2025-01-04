@@ -16,7 +16,7 @@ export const GET = async () => {
     await connectDB();
     const realEstates = await prisma.realEstate.findMany({
       orderBy: {
-        id: "asc",
+        createdAt: "desc",
       },
     });
     return NextResponse.json(realEstates, { status: 200 });
