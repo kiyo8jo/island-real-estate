@@ -5,13 +5,3 @@
   padding: 50px;
   max-width: 1024px;
 }
-
-.homes_container {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  gap: 10px;
-  padding: 10px;
-  background-color: #a9f1a9;
-  margin-bottom: 80px;
-}

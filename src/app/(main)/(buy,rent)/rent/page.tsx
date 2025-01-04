@@ -4,9 +4,9 @@ import styles from "../../page.module.css";
 import Map from "@/app/components/common/map/Map";
 import SelectButtons from "@/app/components/common/selectButtons/SelectButtons";
 import PageNation from "@/app/components/common/pageNation/PageNation";
-import Card from "@/app/components/common/Card/Card";
 import { useEffect, useState } from "react";
 import { RealEstateDataType } from "@/app/types/types";
+import AllRentCardsContainer from "@/app/components/rent/allRentCardsContainer/AllRentCardsContainer";
 
 const RentPage = () => {
   const [allRentRealEstates, setAllRealEstates] = useState<
@@ -26,11 +26,7 @@ const RentPage = () => {
       <Title title={"借りる / Rent"} />
       <Map />
       <SelectButtons />
-      <div className={styles.homes_container}>
-        {allRentRealEstates.map((data) => (
-          <Card data={data} key={data.id} />
-        ))}
-      </div>
+      <AllRentCardsContainer allRentRealEstates={allRentRealEstates} />
       <PageNation />
     </div>
   );

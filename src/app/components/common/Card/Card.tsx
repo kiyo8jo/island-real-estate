@@ -1,11 +1,11 @@
 import { RealEstateDataType } from "@/app/types/types";
 import styles from "./Card.module.css";
 
-interface Props {
+interface CardProps {
   data: RealEstateDataType;
 }
 
-const Card = ({ data }: Props) => {
+const Card = ({ data }: CardProps) => {
   return (
     <div className={styles.home_card}>
       <div className={styles.left_container}>

@@ -5,9 +5,9 @@ import styles from "../../page.module.css";
 import Map from "@/app/components/common/map/Map";
 import SelectButtons from "@/app/components/common/selectButtons/SelectButtons";
 import PageNation from "@/app/components/common/pageNation/PageNation";
-import Card from "@/app/components/common/Card/Card";
 import { useEffect, useState } from "react";
 import { RealEstateDataType } from "@/app/types/types";
+import AllBuyCardsContainer from "@/app/components/buy/allBuyCardsContainer/AllBuyCardsContainer";
 
 const BuyPage = () => {
   const [allBuyRealEstates, setAllByuRealEstates] = useState<
@@ -26,11 +26,7 @@ const BuyPage = () => {
       <Title title={"買う / Buy"} />
       <Map />
       <SelectButtons />
-      <div className={styles.homes_container}>
-        {allBuyRealEstates.map((data) => (
-          <Card data={data} key={data.id} />
-        ))}
-      </div>
+      <AllBuyCardsContainer allBuyRealEstates={allBuyRealEstates}/>
       <PageNation />
     </div>
   );
