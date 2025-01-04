@@ -1,21 +1,35 @@
+"use client";
 import Title from "@/app/components/common/title/Title";
 import styles from "../../page.module.css";
 import Map from "@/app/components/common/map/Map";
 import SelectButtons from "@/app/components/common/selectButtons/SelectButtons";
-import HomeCard from "@/app/components/common/homeCard/HomeCard";
 import PageNation from "@/app/components/common/pageNation/PageNation";
+import Card from "@/app/components/common/Card/Card";
+import { useEffect, useState } from "react";
+import { RealEstateDataType } from "@/app/types/types";
 
 const RentPage = () => {
+  const [allRentRealEstates, setAllRealEstates] = useState<
+    RealEstateDataType[]
+  >([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch("http://localhost:3000/api/getAllRentData");
+      const _realEstates = await res.json();
+      setAllRealEstates(_realEstates);
+    };
+    fetchData();
+  }, []);
+
   return (
     <div className={styles.wrapper}>
       <Title title={"借りる / Rent"} />
       <Map />
       <SelectButtons />
       <div className={styles.homes_container}>
-        <HomeCard />
-        <HomeCard />
-        <HomeCard />
-        <HomeCard />
+        {allRentRealEstates.map((data) => (
+          <Card data={data} key={data.id} />
+        ))}
       </div>
       <PageNation />
     </div>
