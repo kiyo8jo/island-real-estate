@@ -20,7 +20,7 @@
   display: flex;
   align-items: center;
   width: 50%;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .link_container div {
