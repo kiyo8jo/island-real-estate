@@ -17,6 +17,10 @@ const Card = ({ data }: CardProps) => {
           <p>{data.type}</p>
         </div>
         <div className={styles.home_info_container}>
+          <p className={styles.home_info_label}> 名前</p>
+          <p>{data.name}</p>
+        </div>
+        <div className={styles.home_info_container}>
           <p className={styles.home_info_label}>住所</p>
           <p>{data.address}</p>
         </div>
