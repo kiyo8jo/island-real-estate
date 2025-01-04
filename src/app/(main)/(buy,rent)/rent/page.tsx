@@ -1,6 +1,6 @@
 "use client";
 import Title from "@/app/components/common/title/Title";
-import styles from "../../page.module.css";
+import styles from "./page.module.css";
 import Map from "@/app/components/common/map/Map";
 import SelectButtons from "@/app/components/common/selectButtons/SelectButtons";
 import PageNation from "@/app/components/common/pageNation/PageNation";
