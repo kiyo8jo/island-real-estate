@@ -1,6 +1,10 @@
 import styles from "./SelectButtons.module.css";
 
-const SelectButtons = () => {
+interface SelectButtonProps {
+  setSelectedOption: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const SelectButtons = ({ setSelectedOption }: SelectButtonProps) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.button_container}>
@@ -23,8 +27,8 @@ const SelectButtons = () => {
       </div>
       <div className={styles.select_container}>
         <p>並び替え :</p>
-        <select>
-          <option value="recommended">おすすめ</option>
+        <select onChange={(e) => setSelectedOption(e.target.value)}>
+          <option value="recommendation">おすすめ</option>
           <option value="new">新着</option>
           <option value="value">価格</option>
         </select>

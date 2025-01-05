@@ -9,5 +9,6 @@ export interface RealEstateDataType {
   layout: string;
   value: number;
   description: string;
+  recommendation: number;
   createdAt: Date;
 }

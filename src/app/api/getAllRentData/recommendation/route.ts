@@ -14,10 +14,15 @@ export const connectDB = async () => {
 export const GET = async () => {
   try {
     await connectDB();
-    // 新着順
+    // おすすめ、降順
     const realEstates = await prisma.realEstate.findMany({
+      where: {
+        type: {
+          contains: "rent",
+        },
+      },
       orderBy: {
-        createdAt: "desc",
+        recommendation: "desc",
       },
     });
     return NextResponse.json(realEstates, { status: 200 });
