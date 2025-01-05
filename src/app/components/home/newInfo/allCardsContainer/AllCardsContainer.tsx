@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import styles from './AllCardsContainer.module.css'
+import styles from "./AllCardsContainer.module.css";
 import { RealEstateDataType } from "@/app/types/types";
 import Card from "@/app/components/common/card/Card";
 
@@ -10,9 +10,12 @@ const AllCardsContainer = () => {
   );
   useEffect(() => {
     const fetchData = async () => {
+      // 全てのデータを新着順で取得
       const res = await fetch("http://localhost:3000/api/getAllData");
-      const _realEstates = await res.json();
-      setAllRealEstates(_realEstates);
+      const realEstates = await res.json();
+      const filteredRealEstates = realEstates.slice(0, 5);
+      // 新着の5件だけ表示
+      setAllRealEstates(filteredRealEstates);
     };
     fetchData();
   }, []);
