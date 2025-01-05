@@ -24,5 +24,6 @@ model RealEstate {
   layout String
   value Int
   description String
+  recommendation Int @default(1)
   createdAt DateTime @default(now())
 }
