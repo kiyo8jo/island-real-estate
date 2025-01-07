@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "RealEstate" ADD COLUMN     "year" INTEGER NOT NULL DEFAULT 1;

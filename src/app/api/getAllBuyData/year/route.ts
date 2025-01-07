@@ -14,6 +14,7 @@ export const connectDB = async () => {
 export const GET = async () => {
   try {
     await connectDB();
+    // 築年数、昇順
     const realEstates = await prisma.realEstate.findMany({
       where: {
         type: {
@@ -21,7 +22,7 @@ export const GET = async () => {
         },
       },
       orderBy: {
-        createdAt: "desc",
+        year: "asc",
       },
     });
     return NextResponse.json(realEstates, { status: 200 });

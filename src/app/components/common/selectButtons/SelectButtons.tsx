@@ -28,9 +28,12 @@ const SelectButtons = ({ setSelectedOption }: SelectButtonProps) => {
       <div className={styles.select_container}>
         <p>並び替え :</p>
         <select onChange={(e) => setSelectedOption(e.target.value)}>
-          <option value="recommendation">おすすめ</option>
-          <option value="new">新着</option>
-          <option value="value">価格</option>
+          <option value="recommendation">おすすめ順</option>
+          <option value="new">新着順</option>
+          <option value="cheap">低価格順</option>
+          <option value="expensive">高価格順</option>
+          <option value="year">築年数が新しい順</option>
+          <option value="space">専有面積が広い順</option>
         </select>
       </div>
     </div>

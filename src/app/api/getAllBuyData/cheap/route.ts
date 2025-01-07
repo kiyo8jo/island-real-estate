@@ -14,7 +14,7 @@ export const connectDB = async () => {
 export const GET = async () => {
   try {
     await connectDB();
-    // 価格、昇順
+    // 価格、安い順
     const realEstates = await prisma.realEstate.findMany({
       where: {
         type: {
