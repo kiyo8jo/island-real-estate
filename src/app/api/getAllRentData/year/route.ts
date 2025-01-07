@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 const prisma = new PrismaClient();
 
@@ -11,20 +11,78 @@ export const connectDB = async () => {
   }
 };
 
-export const GET = async () => {
+export const POST = async (request: NextRequest) => {
   try {
     await connectDB();
-    // 築年数、昇順
-    const realEstates = await prisma.realEstate.findMany({
-      where: {
-        type: {
-          contains: "rent",
+
+    const { area, buildingType } = await request.json();
+
+    let realEstates;
+
+    // 築年数少ない順
+    if (!area && !buildingType) {
+      realEstates = await prisma.realEstate.findMany({
+        where: {
+          type: {
+            contains: "rent",
+          },
         },
-      },
-      orderBy: {
-        year: "asc",
-      },
-    });
+        orderBy: {
+          year: "asc",
+        },
+      });
+    }
+
+    if (area && buildingType) {
+      realEstates = await prisma.realEstate.findMany({
+        where: {
+          type: {
+            contains: "rent",
+          },
+          area: {
+            contains: area,
+          },
+          buildingType: {
+            contains: buildingType,
+          },
+        },
+        orderBy: {
+          year: "asc",
+        },
+      });
+    }
+
+    if (!area && buildingType) {
+      realEstates = await prisma.realEstate.findMany({
+        where: {
+          type: {
+            contains: "rent",
+          },
+          buildingType: {
+            contains: buildingType,
+          },
+        },
+        orderBy: {
+          year: "asc",
+        },
+      });
+    }
+    if (area && !buildingType) {
+      realEstates = await prisma.realEstate.findMany({
+        where: {
+          type: {
+            contains: "rent",
+          },
+          area: {
+            contains: area,
+          },
+        },
+        orderBy: {
+          year: "asc",
+        },
+      });
+    }
+
     return NextResponse.json(realEstates, { status: 200 });
   } catch (error) {
     return NextResponse.json(error, { status: 500 });

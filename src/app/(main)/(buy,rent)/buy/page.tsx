@@ -17,7 +17,6 @@ const BuyPage = () => {
   >([]);
   // データをソートするための値を格納するstate
   const [selectedOption, setSelectedOption] = useState("recommendation");
-  console.log(selectedOption);
 
   useEffect(() => {
     const fetchData = async () => {

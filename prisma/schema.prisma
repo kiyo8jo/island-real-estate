@@ -26,5 +26,6 @@ model RealEstate {
   description String
   recommendation Int @default(1)
   year Int @default(1)
+  buildingType String @default("apartment")
   createdAt DateTime @default(now())
 }

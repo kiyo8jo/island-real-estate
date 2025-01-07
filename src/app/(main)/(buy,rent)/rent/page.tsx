@@ -14,27 +14,47 @@ const RentPage = () => {
     RealEstateDataType[]
   >([]);
   // データをソートするための値を格納するstate
-  const [selectedOption, setSelectedOption] = useState("recommendation");
-  console.log(selectedOption);
+  const [selectedOption, setSelectedOption] =
+    useState<string>("recommendation");
+
+  // データを絞り込むための値（地域）を格納するstate
+  const [selectedArea, setSelectedArea] = useState<string | null>(null);
+
+  // データを絞り込むための値（種類）を格納するstate
+  const [selectedBuildingType, setSelectedBuildingType] = useState<
+    string | null
+  >(null);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchAllData = async () => {
       // selectedOptionによってたたくapiを変える
       const res = await fetch(
-        `http://localhost:3000/api/getAllRentData/${selectedOption}`
+        `http://localhost:3000/api/getAllRentData/${selectedOption}`,
+        {
+          method: "POST",
+          body: JSON.stringify({
+            // ソートのためにarea,buildingTypeをpost
+            area: selectedArea,
+            buildingType: selectedBuildingType,
+          }),
+        }
       );
       const _realEstates = await res.json();
       setAllRealEstates(_realEstates);
     };
 
-    fetchData();
-  }, [selectedOption]);
+    fetchAllData();
+  }, [selectedOption, selectedArea, selectedBuildingType]);
 
   return (
     <div className={styles.wrapper}>
       <Title title={"借りる / Rent"} />
       <Map />
-      <SelectButtons setSelectedOption={setSelectedOption} />
+      <SelectButtons
+        setSelectedOption={setSelectedOption}
+        setSelectedArea={setSelectedArea}
+        setSelectedBuildingType={setSelectedBuildingType}
+      />
       <AllRentCardsContainer allRentRealEstates={allRentRealEstates} />
       <PageNation />
     </div>

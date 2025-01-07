@@ -2,28 +2,42 @@ import styles from "./SelectButtons.module.css";
 
 interface SelectButtonProps {
   setSelectedOption: React.Dispatch<React.SetStateAction<string>>;
+  setSelectedArea: React.Dispatch<React.SetStateAction<string | null>>;
+  setSelectedBuildingType: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
-const SelectButtons = ({ setSelectedOption }: SelectButtonProps) => {
+const SelectButtons = ({
+  setSelectedOption,
+  setSelectedArea,
+  setSelectedBuildingType,
+}: SelectButtonProps) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.button_container}>
         <p>地域</p>
-        <div>三根</div>
-        <div>大賀郷</div>
-        <div>樫立</div>
-        <div>中之郷</div>
-        <div>末吉</div>
-        <div>その他</div>
+        <button onClick={() => setSelectedArea("mitsune")}>三根</button>
+        <button onClick={() => setSelectedArea("okago")}>大賀郷</button>
+        <button onClick={() => setSelectedArea("kashitate")}>樫立</button>
+        <button onClick={() => setSelectedArea("nakanogo")}>中之郷</button>
+        <button onClick={() => setSelectedArea("sueyoshi")}>末吉</button>
+        <button onClick={() => setSelectedArea("others")}>その他</button>
+        <button onClick={() => setSelectedArea(null)}>リセット</button>
       </div>
       <div className={styles.button_container}>
         <p>種類</p>
-        <div>アパート</div>
-        <div>一戸</div>
-        <div>テラス</div>
-        <div>土地</div>
-        <div>店舗</div>
-        <div>その他</div>
+        <button onClick={() => setSelectedBuildingType("apartment")}>
+          アパート
+        </button>
+        <button onClick={() => setSelectedBuildingType("house")}>一戸</button>
+        <button onClick={() => setSelectedBuildingType("terrace")}>
+          テラス
+        </button>
+        <button onClick={() => setSelectedBuildingType("land")}>土地</button>
+        <button onClick={() => setSelectedBuildingType("shop")}>店舗</button>
+        <button onClick={() => setSelectedBuildingType("others")}>
+          その他
+        </button>
+        <button onClick={() => setSelectedBuildingType(null)}>リセット</button>
       </div>
       <div className={styles.select_container}>
         <p>並び替え :</p>
