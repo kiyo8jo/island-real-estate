@@ -5,6 +5,10 @@
   margin-bottom: 80px;
 }
 
+.container {
+  display: flex;
+}
+
 .wrapper p {
   margin: 0 20px;
   cursor: pointer;

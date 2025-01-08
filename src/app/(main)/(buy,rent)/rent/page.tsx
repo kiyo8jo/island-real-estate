@@ -58,7 +58,7 @@ const RentPage = () => {
         selectedBuildingType={selectedBuildingType}
       />
       <AllRentCardsContainer allRentRealEstates={allRentRealEstates} />
-      <PageNation />
+      <PageNation allBuyRealEstates={allRentRealEstates} />
     </div>
   );
 };

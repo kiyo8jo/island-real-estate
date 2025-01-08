@@ -57,7 +57,7 @@ const BuyPage = () => {
         selectedBuildingType={selectedBuildingType}
       />
       <AllBuyCardsContainer allBuyRealEstates={allBuyRealEstates} />
-      <PageNation />
+      <PageNation allBuyRealEstates={allBuyRealEstates} />
     </div>
   );
 };

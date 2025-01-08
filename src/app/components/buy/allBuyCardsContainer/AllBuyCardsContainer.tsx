@@ -7,6 +7,9 @@ interface AllBuyCardsProps {
 }
 
 const AllBuyCardsContainer = ({ allBuyRealEstates }: AllBuyCardsProps) => {
+  // topの2つを表示
+  // const displayItemNumber = 2;
+  // let displayItem
   return (
     <div className={styles.homes_container}>
       {allBuyRealEstates.map((data) => (

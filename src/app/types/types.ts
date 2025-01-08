@@ -11,4 +11,6 @@ export interface RealEstateDataType {
   description: string;
   recommendation: number;
   createdAt: Date;
+  year: number;
+  buildingType: string;
 }
