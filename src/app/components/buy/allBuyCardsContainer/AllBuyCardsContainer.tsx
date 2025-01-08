@@ -7,14 +7,19 @@ interface AllBuyCardsProps {
 }
 
 const AllBuyCardsContainer = ({ allBuyRealEstates }: AllBuyCardsProps) => {
-  // topの2つを表示
-  // const displayItemNumber = 2;
-  // let displayItem
+  const itemsNumber = Object.keys(allBuyRealEstates).length;
+
   return (
     <div className={styles.homes_container}>
-      {allBuyRealEstates.map((data) => (
-        <Card data={data} key={data.id} />
-      ))}
+      {itemsNumber === 0 ? (
+        <p className={styles.no_items}>該当する物件がありません</p>
+      ) : (
+        <div className={styles.homes_container}>
+          {allBuyRealEstates.map((data) => (
+            <Card data={data} key={data.id} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };

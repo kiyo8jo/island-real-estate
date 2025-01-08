@@ -56,6 +56,7 @@ const BuyPage = () => {
         selectedArea={selectedArea}
         selectedBuildingType={selectedBuildingType}
       />
+      {}
       <AllBuyCardsContainer allBuyRealEstates={allBuyRealEstates} />
       <PageNation allBuyRealEstates={allBuyRealEstates} />
     </div>
