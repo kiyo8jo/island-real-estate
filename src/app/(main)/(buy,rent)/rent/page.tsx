@@ -54,6 +54,8 @@ const RentPage = () => {
         setSelectedOption={setSelectedOption}
         setSelectedArea={setSelectedArea}
         setSelectedBuildingType={setSelectedBuildingType}
+        selectedArea={selectedArea}
+        selectedBuildingType={selectedBuildingType}
       />
       <AllRentCardsContainer allRentRealEstates={allRentRealEstates} />
       <PageNation />

@@ -56,3 +56,7 @@
 .select_container select {
   height: 20px;
 }
+
+.button_container .active {
+  background-color: tomato;
+}
