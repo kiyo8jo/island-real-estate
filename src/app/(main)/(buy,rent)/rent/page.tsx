@@ -2,7 +2,7 @@
 import Title from "@/app/components/common/title/Title";
 import styles from "./page.module.css";
 import Map from "@/app/components/common/map/Map";
-import SelectButtons from "@/app/components/common/selectButtons/SelectButtons";
+import SelectButtons from "@/app/components/common/filterAndResetButtons/FilterAndResetButtons";
 import PageNation from "@/app/components/common/pageNation/PageNation";
 import { useEffect, useState } from "react";
 import { RealEstateDataType } from "@/app/types/types";
