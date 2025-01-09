@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 const prisma = new PrismaClient();
 
@@ -11,16 +11,21 @@ export const connectDB = async () => {
   }
 };
 
-export const GET = async () => {
+export const GET = async (
+  request: NextRequest,
+  { params }: { params: { id: string } }
+) => {
   try {
     await connectDB();
-    // 新着順
-    const realEstates = await prisma.realEstate.findMany({
-      orderBy: {
-        createdAt: "desc",
+    const id = parseInt(params.id);
+
+    const detailRealEstate = await prisma.realEstate.findUnique({
+      where: {
+        id: id,
       },
     });
-    return NextResponse.json(realEstates, { status: 200 });
+
+    return NextResponse.json(detailRealEstate, { status: 200 });
   } catch (error) {
     return NextResponse.json(error, { status: 500 });
   } finally {

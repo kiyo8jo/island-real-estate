@@ -1,5 +1,6 @@
 import { RealEstateDataType } from "@/app/types/types";
 import styles from "./Card.module.css";
+import Link from "next/link";
 
 interface CardProps {
   data: RealEstateDataType;
@@ -7,7 +8,7 @@ interface CardProps {
 
 const Card = ({ data }: CardProps) => {
   return (
-    <div className={styles.home_card}>
+    <Link href={`/detail/${data.id}`} className={styles.home_card}>
       <div className={styles.left_container}>
         <div className={styles.img}>画像</div>
       </div>
@@ -33,7 +34,7 @@ const Card = ({ data }: CardProps) => {
           <p>{data.space}</p>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

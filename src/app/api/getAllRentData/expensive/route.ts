@@ -23,9 +23,7 @@ export const POST = async (request: NextRequest) => {
     if (!area && !buildingType) {
       realEstates = await prisma.realEstate.findMany({
         where: {
-          type: {
-            contains: "rent",
-          },
+          type: "rent",
         },
         orderBy: {
           value: "desc",
@@ -36,15 +34,9 @@ export const POST = async (request: NextRequest) => {
     if (area && buildingType) {
       realEstates = await prisma.realEstate.findMany({
         where: {
-          type: {
-            contains: "rent",
-          },
-          area: {
-            contains: area,
-          },
-          buildingType: {
-            contains: buildingType,
-          },
+          type: "rent",
+          area: area,
+          buildingType: buildingType,
         },
         orderBy: {
           value: "desc",
@@ -55,12 +47,8 @@ export const POST = async (request: NextRequest) => {
     if (!area && buildingType) {
       realEstates = await prisma.realEstate.findMany({
         where: {
-          type: {
-            contains: "rent",
-          },
-          buildingType: {
-            contains: buildingType,
-          },
+          type: "rent",
+          buildingType: buildingType,
         },
         orderBy: {
           value: "desc",
@@ -71,12 +59,8 @@ export const POST = async (request: NextRequest) => {
     if (area && !buildingType) {
       realEstates = await prisma.realEstate.findMany({
         where: {
-          type: {
-            contains: "rent",
-          },
-          area: {
-            contains: area,
-          },
+          type: "rent",
+          area: area,
         },
         orderBy: {
           value: "desc",
