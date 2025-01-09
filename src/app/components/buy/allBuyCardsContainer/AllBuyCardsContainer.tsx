@@ -3,20 +3,22 @@ import Card from "../../common/card/Card";
 import styles from "./AllBuyCardsContainer.module.css";
 
 interface AllBuyCardsProps {
-  allBuyRealEstates: RealEstateDataType[];
+  displayBuyRealEstates: RealEstateDataType[];
+  getItemsNumber: number;
 }
 
-const AllBuyCardsContainer = ({ allBuyRealEstates }: AllBuyCardsProps) => {
-  const itemsNumber = Object.keys(allBuyRealEstates).length;
-
+const AllBuyCardsContainer = ({
+  displayBuyRealEstates,
+  getItemsNumber,
+}: AllBuyCardsProps) => {
   return (
     <div className={styles.homes_container}>
-      {itemsNumber === 0 ? (
+      {getItemsNumber === 0 ? (
         <p className={styles.no_items}>該当する物件がありません</p>
       ) : (
         <div className={styles.homes_container}>
-          {allBuyRealEstates.map((data) => (
-            <Card data={data} key={data.id} />
+          {displayBuyRealEstates.map((data) => (
+            <Card key={data.id} data={data} />
           ))}
         </div>
       )}

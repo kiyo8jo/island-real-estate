@@ -14,6 +14,15 @@ const BuyPage = () => {
   const [allBuyRealEstates, setAllBuyRealEstates] = useState<
     RealEstateDataType[]
   >([]);
+
+  // 現在のページ位置を格納するstate
+  const [currentPage, setCurrentPage] = useState<number>(1);
+
+  // 表示するデータを格納するstate
+  const [displayBuyRealEstates, setDisplayBuyRealEstates] = useState<
+    RealEstateDataType[]
+  >([]);
+
   // データをソートするための値を格納するstate
   const [selectedOption, setSelectedOption] =
     useState<string>("recommendation");
@@ -25,6 +34,12 @@ const BuyPage = () => {
   const [selectedBuildingType, setSelectedBuildingType] = useState<
     string | null
   >(null);
+
+  // 1ページあたりに表示する要素数
+  const displayItemsNumber = 2;
+
+  //取得した要素数
+  const getItemsNumber = Object.keys(allBuyRealEstates).length;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -42,9 +57,16 @@ const BuyPage = () => {
       );
       const _realEstates = await res.json();
       setAllBuyRealEstates(_realEstates);
+      setDisplayBuyRealEstates(
+        _realEstates.slice(
+          currentPage * displayItemsNumber - displayItemsNumber,
+          currentPage * displayItemsNumber
+        )
+      );
     };
     fetchData();
-  }, [selectedOption, selectedArea, selectedBuildingType]);
+  }, [selectedOption, selectedArea, selectedBuildingType, currentPage]);
+
   return (
     <div className={styles.wrapper}>
       <Title title={"買う / Buy"} />
@@ -53,12 +75,20 @@ const BuyPage = () => {
         setSelectedOption={setSelectedOption}
         setSelectedArea={setSelectedArea}
         setSelectedBuildingType={setSelectedBuildingType}
+        setCurrentPage={setCurrentPage}
         selectedArea={selectedArea}
         selectedBuildingType={selectedBuildingType}
       />
-      {}
-      <AllBuyCardsContainer allBuyRealEstates={allBuyRealEstates} />
-      <PageNation allBuyRealEstates={allBuyRealEstates} />
+      <AllBuyCardsContainer
+        displayBuyRealEstates={displayBuyRealEstates}
+        getItemsNumber={getItemsNumber}
+      />
+      <PageNation
+        setCurrentPage={setCurrentPage}
+        currentPage={currentPage}
+        displayItemsNumber={displayItemsNumber}
+        getItemsNumber={getItemsNumber}
+      />
     </div>
   );
 };

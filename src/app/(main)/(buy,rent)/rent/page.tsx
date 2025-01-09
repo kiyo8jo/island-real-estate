@@ -1,4 +1,5 @@
 "use client";
+
 import Title from "@/app/components/common/title/Title";
 import styles from "./page.module.css";
 import Map from "@/app/components/common/map/Map";
@@ -10,9 +11,17 @@ import AllRentCardsContainer from "@/app/components/rent/allRentCardsContainer/A
 
 const RentPage = () => {
   // 取得したデータを格納するstate
-  const [allRentRealEstates, setAllRealEstates] = useState<
+  const [allRentRealEstates, setAllRentRealEstates] = useState<
     RealEstateDataType[]
   >([]);
+  // 現在のページ位置を格納するstate
+  const [currentPage, setCurrentPage] = useState<number>(1);
+
+  // 表示するデータを格納するstate
+  const [displayRentRealEstates, setDisplayRentRealEstates] = useState<
+    RealEstateDataType[]
+  >([]);
+
   // データをソートするための値を格納するstate
   const [selectedOption, setSelectedOption] =
     useState<string>("recommendation");
@@ -25,8 +34,14 @@ const RentPage = () => {
     string | null
   >(null);
 
+  // 1ページあたりに表示する要素数
+  const displayItemsNumber = 2;
+
+  //取得した要素数
+  const getItemsNumber = Object.keys(allRentRealEstates).length;
+
   useEffect(() => {
-    const fetchAllData = async () => {
+    const fetchData = async () => {
       // selectedOptionによってたたくapiを変える
       const res = await fetch(
         `http://localhost:3000/api/getAllRentData/${selectedOption}`,
@@ -40,11 +55,17 @@ const RentPage = () => {
         }
       );
       const _realEstates = await res.json();
-      setAllRealEstates(_realEstates);
+      setAllRentRealEstates(_realEstates);
+      setDisplayRentRealEstates(
+        _realEstates.slice(
+          currentPage * displayItemsNumber - displayItemsNumber,
+          currentPage * displayItemsNumber
+        )
+      );
     };
 
-    fetchAllData();
-  }, [selectedOption, selectedArea, selectedBuildingType]);
+    fetchData();
+  }, [selectedOption, selectedArea, selectedBuildingType, currentPage]);
 
   return (
     <div className={styles.wrapper}>
@@ -54,11 +75,20 @@ const RentPage = () => {
         setSelectedOption={setSelectedOption}
         setSelectedArea={setSelectedArea}
         setSelectedBuildingType={setSelectedBuildingType}
+        setCurrentPage={setCurrentPage}
         selectedArea={selectedArea}
         selectedBuildingType={selectedBuildingType}
       />
-      <AllRentCardsContainer allRentRealEstates={allRentRealEstates} />
-      <PageNation allBuyRealEstates={allRentRealEstates} />
+      <AllRentCardsContainer
+        displayRentRealEstates={displayRentRealEstates}
+        getItemsNumber={getItemsNumber}
+      />
+      <PageNation
+        setCurrentPage={setCurrentPage}
+        currentPage={currentPage}
+        displayItemsNumber={displayItemsNumber}
+        getItemsNumber={getItemsNumber}
+      />
     </div>
   );
 };

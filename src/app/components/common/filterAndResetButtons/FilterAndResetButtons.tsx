@@ -6,6 +6,7 @@ interface FilterAndResetButtonsProps {
   setSelectedOption: React.Dispatch<React.SetStateAction<string>>;
   setSelectedArea: React.Dispatch<React.SetStateAction<string | null>>;
   setSelectedBuildingType: React.Dispatch<React.SetStateAction<string | null>>;
+  setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
   selectedArea: string | null;
   selectedBuildingType: string | null;
 }
@@ -14,6 +15,7 @@ const FilterAndResetButtons = ({
   setSelectedOption,
   setSelectedArea,
   setSelectedBuildingType,
+  setCurrentPage,
   selectedArea,
   selectedBuildingType,
 }: FilterAndResetButtonsProps) => {
@@ -54,7 +56,10 @@ const FilterAndResetButtons = ({
             label={area.label}
           />
         ))}
-        <ResetButton setFunction={setSelectedArea} />
+        <ResetButton
+          setFunction={setSelectedArea}
+          setCurrentPage={setCurrentPage}
+        />
       </div>
       <div className={styles.button_container}>
         <p>種類</p>
@@ -67,7 +72,10 @@ const FilterAndResetButtons = ({
             label={buildingType.label}
           />
         ))}
-        <ResetButton setFunction={setSelectedBuildingType} />
+        <ResetButton
+          setFunction={setSelectedBuildingType}
+          setCurrentPage={setCurrentPage}
+        />
       </div>
       <div className={styles.select_container}>
         <p>並び替え :</p>
