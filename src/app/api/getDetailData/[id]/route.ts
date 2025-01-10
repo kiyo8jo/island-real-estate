@@ -11,10 +11,8 @@ export const connectDB = async () => {
   }
 };
 
-export const GET = async (
-  request: NextRequest,
-  { params }: { params: { id: string } }
-) => {
+export const GET = async (request: NextRequest, props: { params: Promise<{ id: string }> }) => {
+  const params = await props.params;
   try {
     await connectDB();
     const id = parseInt(params.id);
