@@ -1,23 +1,10 @@
-"use client";
-
-import { useParams } from "next/navigation";
 import styles from "./page.module.css";
-import { useEffect, useState } from "react";
-import { RealEstateDataType } from "@/app/types/types";
 import Title from "@/app/components/common/title/Title";
 
-const DetailPage = () => {
-  const { id } = useParams();
-  const [realEstate, setRealEstate] = useState<RealEstateDataType | null>(null);
-  useEffect(() => {
-    const fetchData = async () => {
-      const res = await fetch(`http://localhost:3000/api/getDetailData/${id}`);
-      const _realEstate = await res.json();
-      setRealEstate(_realEstate);
-      console.log(_realEstate);
-    };
-    fetchData();
-  }, [id]);
+const DetailPage = async ({ params }: { params: { id: string } }) => {
+  const { id } = await params;
+  const res = await fetch(`http://localhost:3000/api/getDetailData/${id}`);
+  const realEstate = await res.json();
 
   return (
     <div className={styles.wrapper}>
