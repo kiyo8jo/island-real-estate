@@ -13,4 +13,6 @@ export interface RealEstateDataType {
   createdAt: Date;
   year: number;
   buildingType: string;
+  floor: number;
+  allFloor: number;
 }
