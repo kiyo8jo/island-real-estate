@@ -27,7 +27,7 @@ const Card = ({ data }: CardProps) => {
         <div className={styles.left_container}>
           <div className={styles.img}>img</div>
         </div>
-        <div className={styles.right_container}>
+        <div className={`${styles.right_container}`}>
           <div className={styles.container}>
             <p className={styles.label}>住所</p>
             <p className={styles.value}>{data.address}</p>
@@ -44,7 +44,9 @@ const Card = ({ data }: CardProps) => {
       </div>
       <div className={styles.sub_information_wrapper}>
         <div className={styles.container}>
-          <div className={styles.label}></div>
+          <div className={styles.label}>
+            <p>見取り図</p>
+          </div>
           <div className={styles.value}>img</div>
         </div>
         <div className={styles.container}>
