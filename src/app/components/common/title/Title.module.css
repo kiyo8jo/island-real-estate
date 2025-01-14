@@ -4,5 +4,6 @@
   height: 50px;
   margin-bottom: 50px;
   padding-left: 20px;
-  background-color: #c0fdfd;
+  border-top: 3px solid #5aae08;
+  box-shadow: 0px 5px 5px 5px #eaeaea;
 }
