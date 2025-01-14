@@ -43,3 +43,29 @@
   text-align: center;
   background-color: rgb(146, 223, 136);
 }
+
+@media screen and (max-width: 1280px) {
+  .wrapper {
+    font-size: small;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .wrapper {
+    font-size: small;
+    height: fit-content;
+  }
+  .content_container {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .left_container {
+    width: 80%;
+    height: 500px;
+  }
+  .right_container {
+    width: 80%;
+    height: 500px;
+    gap: 20px;
+  }
+}
