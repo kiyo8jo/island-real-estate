@@ -32,12 +32,12 @@
 }
 
 .button_container button {
-  background-color: yellow;
+  background-color: #6cce09;
   cursor: pointer;
 }
 
 .button_container button:last-child {
-  background-color: aqua;
+  background-color: #5a862e;
   margin-left: 10px;
 }
 
