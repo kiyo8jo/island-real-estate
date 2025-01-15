@@ -17,12 +17,14 @@
 }
 
 .form_part_container input {
+  margin-left: 1px;
   width: 50%;
   line-height: 1rem;
   padding: 10px;
 }
 
 .form_part_container textarea {
+  margin-left: 1px;
   width: 100%;
   height: 100px;
   padding: 10px;
@@ -67,4 +69,20 @@
   font-size: medium;
   cursor: pointer;
   border: none;
+}
+
+@media screen and (max-width: 1280px) {
+  .wrapper {
+    font-size: small;
+  }
+
+  .button_container button {
+    font-size: small;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .form_part_container input {
+    width: 100%;
+  }
 }
