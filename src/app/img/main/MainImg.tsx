@@ -6,11 +6,12 @@ const MainImg = () => {
   return (
     <div className={styles.wrapper}>
       <Image
+        className={styles.img}
         src="/main/main.png"
         useMap="#image-map"
         alt="main"
-        width={924}
-        height={500}
+        fill
+        style={{ objectFit: "contain" }}
         priority
       />
       <map name="image-map">
