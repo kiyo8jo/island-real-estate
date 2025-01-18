@@ -15,7 +15,7 @@ const MainImg = () => {
         priority
       />
       <map name="image-map">
-        <Link href="/rent">
+        <Link href="/rent/mitsune">
           <area
             target="_blank"
             alt="mitusne_rent"
@@ -24,7 +24,7 @@ const MainImg = () => {
             shape="rect"
           />
         </Link>
-        <Link href="/buy">
+        <Link href="/buy/mitsune">
           <area
             target="_blank"
             alt="mitusne_buy"
@@ -34,7 +34,7 @@ const MainImg = () => {
             shape="rect"
           />
         </Link>
-        <Link href="/rent">
+        <Link href="/rent/okago">
           <area
             target="_blank"
             alt="okago_rent"
@@ -44,7 +44,7 @@ const MainImg = () => {
             shape="rect"
           />
         </Link>
-        <Link href="/buy">
+        <Link href="/buy/okago">
           <area
             target="_blank"
             alt="okago_buy"
@@ -54,7 +54,7 @@ const MainImg = () => {
             shape="rect"
           />
         </Link>
-        <Link href="/rent">
+        <Link href="/rent/kashitate">
           <area
             target="_blank"
             alt="kashitate_rent"
@@ -64,7 +64,7 @@ const MainImg = () => {
             shape="rect"
           />
         </Link>
-        <Link href="/buy">
+        <Link href="/buy/kashitate">
           <area
             target="_blank"
             alt="kashitate_buy"
@@ -74,7 +74,7 @@ const MainImg = () => {
             shape="rect"
           />
         </Link>
-        <Link href="/rent">
+        <Link href="/rent/nakanogo">
           <area
             target="_blank"
             alt="nakanogo_rent"
@@ -84,7 +84,7 @@ const MainImg = () => {
             shape="rect"
           />
         </Link>
-        <Link href="/buy">
+        <Link href="/buy/nakanogo">
           <area
             target="_blank"
             alt="nakanogo_buy"
@@ -94,7 +94,7 @@ const MainImg = () => {
             shape="rect"
           />
         </Link>
-        <Link href="/rent">
+        <Link href="/rent/sueyoshi">
           <area
             target="_blank"
             alt="sueyoshi_rent"
@@ -104,7 +104,7 @@ const MainImg = () => {
             shape="rect"
           />
         </Link>
-        <Link href="/buy">
+        <Link href="/buy/sueyoshi">
           <area
             target="_blank"
             alt="sueyoshi_buy"
