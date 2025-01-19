@@ -58,8 +58,10 @@ const MainImg = () => {
   const updateCoordinates = useCallback(() => {
     if (!imgRef.current) return;
     const img = imgRef.current;
-    const widthRatio = img.clientWidth / 924;
-    const heightRatio = img.clientHeight / 500;
+    const naturalWidth = 924;
+    const naturalHeight = 500;
+    const widthRatio = img.clientWidth / naturalWidth;
+    const heightRatio = img.clientHeight / naturalHeight;
     const calculateCoords = (coords: number[]) => {
       return coords.map((coord, index: number) =>
         index % 2 === 0 ? coord * widthRatio : coord * heightRatio
@@ -87,7 +89,9 @@ const MainImg = () => {
         buy: calculateCoords(initialCoords.sueyoshi.buy),
       },
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   useEffect(() => {
     window.addEventListener("resize", updateCoordinates);
     const handleLoad = () => {
