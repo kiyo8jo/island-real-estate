@@ -4,29 +4,7 @@ import Image from "next/image";
 import styles from "./MainImg.module.css";
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
-
-interface CoordsType {
-  mitsune: {
-    rent: number[];
-    buy: number[];
-  };
-  okago: {
-    rent: number[];
-    buy: number[];
-  };
-  kashitate: {
-    rent: number[];
-    buy: number[];
-  };
-  nakanogo: {
-    rent: number[];
-    buy: number[];
-  };
-  sueyoshi: {
-    rent: number[];
-    buy: number[];
-  };
-}
+import { CoordsType } from "@/app/types/types";
 
 const MainImg = () => {
   const initialCoords: CoordsType = {
@@ -116,7 +94,7 @@ const MainImg = () => {
         className={styles.img}
         src="/main/main.png"
         useMap="#image-map"
-        alt="main"
+        alt="main-map"
         fill
         priority
         sizes="100vw"

@@ -16,3 +16,26 @@ export interface RealEstateDataType {
   floor: number;
   allFloor: number;
 }
+
+export interface CoordsType {
+  mitsune: {
+    rent: number[];
+    buy: number[];
+  };
+  okago: {
+    rent: number[];
+    buy: number[];
+  };
+  kashitate: {
+    rent: number[];
+    buy: number[];
+  };
+  nakanogo: {
+    rent: number[];
+    buy: number[];
+  };
+  sueyoshi: {
+    rent: number[];
+    buy: number[];
+  };
+}
