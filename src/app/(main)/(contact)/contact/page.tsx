@@ -7,27 +7,83 @@ import Document from "@/app/components/common/document/Document";
 
 const ContactPage = () => {
   const [display, setDisplay] = useState<boolean>(false);
+
+  const [name, setName] = useState<string>("");
+  const [tel, setTel] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [inquiry, setInquiry] = useState<string>("");
+
+  const handleName = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setName(e.target.value);
+  };
+  const handleTel = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTel(e.target.value);
+  };
+  const handleEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+  };
+  const handleInquiry = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setInquiry(e.target.value);
+  };
+
+  const handleSubmit = async () => {
+    await fetch("http://localhost:3000/api/sendEmail", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name, tel, email, inquiry }),
+    });
+  };
+
   return (
     <div className={styles.wrapper}>
       <Title title="問い合わせ" />
-      <form>
+      <form onSubmit={handleSubmit}>
+        {/* 名前 */}
         <div className={styles.form_part_container}>
           <label htmlFor="name">氏名</label>
-          <input type="text" id="name" placeholder="田中太郎" />
+          <input
+            type="text"
+            id="name"
+            placeholder="田中太郎"
+            autoComplete="name"
+            value={name}
+            onChange={handleName}
+          />
         </div>
+        {/*　電話番号  */}
         <div className={styles.form_part_container}>
           <label htmlFor="tel">電話番号</label>
-          <input type="tel" id="tel" placeholder="000-0000-0000" />
+          <input
+            type="tel"
+            id="tel"
+            placeholder="000-0000-0000"
+            autoComplete="tel"
+            value={tel}
+            onChange={handleTel}
+          />
         </div>
+        {/*email  */}
         <div className={styles.form_part_container}>
           <label htmlFor="email">メールアドレス</label>
-          <input type="email" id="email" placeholder="info@example.com" />
+          <input
+            type="email"
+            id="email"
+            placeholder="info@example.com"
+            autoComplete="email"
+            value={email}
+            onChange={handleEmail}
+          />
         </div>
+        {/* inquiry */}
         <div className={styles.form_part_container}>
-          <label htmlFor="detail">お問い合わせ内容</label>
+          <label htmlFor="inquiry">お問い合わせ内容</label>
           <textarea
-            id="detail"
+            id="inquiry"
             placeholder="お問い合わせ内容を入力してください"
+            value={inquiry}
+            onChange={handleInquiry}
           ></textarea>
         </div>
         <div className={styles.personalDataContainer}>
@@ -48,7 +104,7 @@ const ContactPage = () => {
           </div>
         </div>
         <div className={styles.button_container}>
-          <button>送信する</button>
+          <button type="submit">送信する</button>
         </div>
       </form>
     </div>
