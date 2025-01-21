@@ -79,7 +79,7 @@ const FilterAndResetButtons = ({
       </div>
       <div className={styles.select_container}>
         <p>並び替え :</p>
-        <select onChange={(e) => setSelectedOption(e.target.value)}>
+        <select onChange={(e) => setSelectedOption(e.target.value)} id="options">
           {options.map((_option) => (
             <option key={_option.value} value={_option.value}>
               {_option.label}

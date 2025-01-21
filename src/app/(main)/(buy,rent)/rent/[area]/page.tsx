@@ -2,13 +2,13 @@
 
 import Title from "@/app/components/common/title/Title";
 import styles from "../page.module.css";
-import Map from "@/app/components/common/map/Map";
 import SelectButtons from "@/app/components/common/filterAndResetButtons/FilterAndResetButtons";
 import PageNation from "@/app/components/common/pageNation/PageNation";
 import { useEffect, useState } from "react";
 import { RealEstateDataType } from "@/app/types/types";
 import AllRentCardsContainer from "@/app/components/rent/allRentCardsContainer/AllRentCardsContainer";
 import { useParams } from "next/navigation";
+import RentImg from "@/app/components/img/rent/RentImg";
 
 const RentPage = () => {
   const { area }: { area: string } = useParams();
@@ -73,7 +73,7 @@ const RentPage = () => {
   return (
     <div className={styles.wrapper}>
       <Title title={"借りる / Rent"} />
-      <Map />
+      <RentImg />
       <SelectButtons
         setSelectedOption={setSelectedOption}
         setSelectedArea={setSelectedArea}

@@ -2,13 +2,13 @@
 
 import Title from "@/app/components/common/title/Title";
 import styles from "../page.module.css";
-import Map from "@/app/components/common/map/Map";
 import SelectButtons from "@/app/components/common/filterAndResetButtons/FilterAndResetButtons";
 import PageNation from "@/app/components/common/pageNation/PageNation";
 import { useEffect, useState } from "react";
 import { RealEstateDataType } from "@/app/types/types";
 import AllBuyCardsContainer from "@/app/components/buy/allBuyCardsContainer/AllBuyCardsContainer";
 import { useParams } from "next/navigation";
+import BuyImg from "@/app/components/img/buy/BuyImg";
 
 const BuyPage = () => {
   const { area }: { area: string } = useParams();
@@ -73,7 +73,7 @@ const BuyPage = () => {
   return (
     <div className={styles.wrapper}>
       <Title title={"買う / Buy"} />
-      <Map />
+      <BuyImg/>
       <SelectButtons
         setSelectedOption={setSelectedOption}
         setSelectedArea={setSelectedArea}

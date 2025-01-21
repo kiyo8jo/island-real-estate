@@ -97,7 +97,7 @@ const RentImg = () => {
         alt="rent-map"
         fill
         priority
-        sizes="100vw"
+        sizes="100%"
         // ref={imgRef}
       />
       <map name="image-map">

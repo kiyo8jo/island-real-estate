@@ -62,8 +62,6 @@ const ContactPage = () => {
     }
   };
 
-  console.log(checked);
-
   return (
     <div className={styles.wrapper}>
       <Title title="問い合わせ" />
