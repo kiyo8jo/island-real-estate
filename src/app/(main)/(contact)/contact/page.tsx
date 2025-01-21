@@ -7,6 +7,7 @@ import Document from "@/app/components/common/document/Document";
 
 const ContactPage = () => {
   const [display, setDisplay] = useState<boolean>(false);
+  const [checked, setChecked] = useState<boolean>(false);
 
   const [name, setName] = useState<string>("");
   const [tel, setTel] = useState<string>("");
@@ -25,16 +26,30 @@ const ContactPage = () => {
   const handleInquiry = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setInquiry(e.target.value);
   };
-
-  const handleSubmit = async () => {
-    await fetch("http://localhost:3000/api/sendEmail", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ name, tel, email, inquiry }),
-    });
+  const handleChecked = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setChecked(e.target.checked);
   };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!name || !email || !inquiry || !checked) {
+      alert("必須項目に入力がありません");
+      return;
+    }
+    try {
+      await fetch("http://localhost:3000/api/sendEmail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, tel, email, inquiry }),
+      });
+    } catch (error) {
+      alert(error);
+    }
+  };
+
+  console.log(checked);
 
   return (
     <div className={styles.wrapper}>
@@ -42,7 +57,11 @@ const ContactPage = () => {
       <form onSubmit={handleSubmit}>
         {/* 名前 */}
         <div className={styles.form_part_container}>
-          <label htmlFor="name">氏名</label>
+          <div className={styles.label_container}>
+            <label htmlFor="name">氏名</label>
+            <span>必須</span>
+          </div>
+
           <input
             type="text"
             id="name"
@@ -54,7 +73,9 @@ const ContactPage = () => {
         </div>
         {/*　電話番号  */}
         <div className={styles.form_part_container}>
-          <label htmlFor="tel">電話番号</label>
+          <div className={styles.label_container}>
+            <label htmlFor="tel">電話番号</label>
+          </div>
           <input
             type="tel"
             id="tel"
@@ -66,7 +87,11 @@ const ContactPage = () => {
         </div>
         {/*email  */}
         <div className={styles.form_part_container}>
-          <label htmlFor="email">メールアドレス</label>
+          <div className={styles.label_container}>
+            <label htmlFor="email">メールアドレス</label>
+            <span>必須</span>
+          </div>
+
           <input
             type="email"
             id="email"
@@ -78,7 +103,10 @@ const ContactPage = () => {
         </div>
         {/* inquiry */}
         <div className={styles.form_part_container}>
-          <label htmlFor="inquiry">お問い合わせ内容</label>
+          <div className={styles.label_container}>
+            <label htmlFor="inquiry">お問い合わせ内容</label>
+            <span>必須</span>
+          </div>
           <textarea
             id="inquiry"
             placeholder="お問い合わせ内容を入力してください"
@@ -97,8 +125,13 @@ const ContactPage = () => {
             </div>
             {display && (
               <div className={styles.input_container}>
-                <input type="checkbox" />
-                <p>ポリシーを確認し、同意しました</p>
+                <input
+                  type="checkbox"
+                  id="checkbox"
+                  checked={checked}
+                  onChange={handleChecked}
+                />
+                <label htmlFor="checkbox">ポリシーを確認し、同意しました</label>
               </div>
             )}
           </div>

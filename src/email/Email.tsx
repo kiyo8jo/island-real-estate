@@ -19,7 +19,13 @@ export default function Email({ name, tel, email, inquiry }: EmailProps) {
             justifyContent: "center",
           }}
         >
-          <p style={{ marginRight: "20px" }}>氏名:</p>
+          <p
+            style={{
+              marginRight: "20px",
+            }}
+          >
+            氏名:
+          </p>
           <p>{name}</p>
         </div>
         <div

@@ -10,7 +10,7 @@ export async function POST(res: NextResponse) {
     const data = await resend.emails.send({
       from: "onboarding@resend.dev",
       to: process.env.MY_ADDRESS!,
-      subject: "Hello world",
+      subject: "Island Real Estate",
       react: Email({ name, tel, email, inquiry }),
     });
 

@@ -3,6 +3,7 @@
   max-width: 1024px;
   margin: 80px auto 0 auto;
   padding: 50px;
+  user-select: none;
 }
 
 .form_part_container {
@@ -11,9 +12,22 @@
   flex-direction: column;
 }
 
-.form_part_container label {
+.label_container {
+  display: flex;
   margin-bottom: 10px;
+  align-items: center;
+}
+
+.form_part_container label {
   font-weight: bold;
+}
+.form_part_container span {
+  font-weight: bold;
+  margin-left: 10px;
+  padding: 1px 5px;
+  background-color: #cccccc;
+  border-radius: 10px;
+  font-size: small;
 }
 
 .form_part_container input {
