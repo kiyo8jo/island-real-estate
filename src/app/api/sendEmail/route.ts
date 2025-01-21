@@ -1,11 +1,11 @@
-import Email from "@/email/Email";
-import { NextResponse } from "next/server";
+import Email from "@/app/email/Email";
+import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-export async function POST(res: NextResponse) {
-  const { name, tel, email, inquiry } = await res.json();
+export async function POST(req:NextRequest) {
+  const { name, tel, email, inquiry } = await req.json();
   try {
     const data = await resend.emails.send({
       from: "onboarding@resend.dev",

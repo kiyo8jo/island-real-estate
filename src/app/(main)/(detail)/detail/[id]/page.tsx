@@ -1,7 +1,7 @@
 import styles from "./page.module.css";
 import Title from "@/app/components/common/title/Title";
 
-const DetailPage = async ({ params }: { params: { id: string } }) => {
+const DetailPage = async ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params;
   const res = await fetch(`http://localhost:3000/api/getDetailData/${id}`);
   const realEstate = await res.json();
