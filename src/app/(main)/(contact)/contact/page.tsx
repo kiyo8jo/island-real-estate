@@ -6,30 +6,43 @@ import { useState } from "react";
 import Document from "@/app/components/common/document/Document";
 
 const ContactPage = () => {
+  // documentを表示させるかどうかのstate
   const [display, setDisplay] = useState<boolean>(false);
+  // checkboxにcheckされているかどうかのstate
   const [checked, setChecked] = useState<boolean>(false);
 
+  // form入力内容
   const [name, setName] = useState<string>("");
   const [tel, setTel] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [inquiry, setInquiry] = useState<string>("");
 
   const handleName = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setName(e.target.value);
+    setName(getSanitizedValue(e.target.value));
   };
   const handleTel = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setTel(e.target.value);
+    setTel(getSanitizedValue(e.target.value));
   };
   const handleEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(e.target.value);
+    setEmail(getSanitizedValue(e.target.value));
   };
   const handleInquiry = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setInquiry(e.target.value);
+    setInquiry(getSanitizedValue(e.target.value));
   };
   const handleChecked = (e: React.ChangeEvent<HTMLInputElement>) => {
     setChecked(e.target.checked);
   };
 
+  // サニタイズ用関数
+  const getSanitizedValue = (inputValue: string) => {
+    return String(inputValue)
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/'/g, "&apos;")
+      .replace(/"/g, "&quot;");
+  };
+
+  // formのsubmit
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name || !email || !inquiry || !checked) {
